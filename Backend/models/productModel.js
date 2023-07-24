@@ -4,8 +4,8 @@ const productSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please Enter product Name"],
-    trim: true,
   },
+
   description: {
     type: String,
     required: [true, "Please Enter product Description"],
@@ -72,4 +72,4 @@ const productSchema = new mongoose.Schema({
   },
 });
 
-module.export = mongoose.model("Product", productSchema);
+module.exports = mongoose.model("Product", productSchema);
