@@ -1,0 +1,71 @@
+.hero2 {
+  width: 100%;
+  height: 100%;
+}
+.maskback {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.in-img2::before {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ3BwLwQ-hvi_Pfb-HYVJB6-BMhq5R7v06rAuG_AVuxLWT156vq6E4cIJ8te9ynQPeNVM&usqp=CAU");
+}
+.in-img2 {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+.maskback::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 70%;
+}
+.heading {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+}
+.heading h1 {
+  font-size: 4rem;
+  font-family: monospace;
+}
+
+.heading p {
+  font-size: 2rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.Projectcard-container {
+  width: 100%;
+  height: 90vh;
+}
+.Projectcard-container h2 {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+.card-container-image {
+  opacity: 140%;
+}
+@media screen and (max-width: 740px) {
+  .heading h1 {
+    font-size: 3rem;
+  }
+  .heading p {
+    font-size: 1.2 rem;
+  }
+}
