@@ -11,10 +11,18 @@
   "author": "Jinish Patel",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.0",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+    "nodemailer": "^6.9.4",
+>>>>>>> 9f736489382723fa0182cb9916caf67d2b67934d
     "nodemon": "^3.0.1"
 =======
     "nodemailer": "^6.9.4",

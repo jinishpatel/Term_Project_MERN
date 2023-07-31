@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 exports.getProducts = (req, res) =>
 {
     res.status(200).json({message: "This is the getProducts route"})
 };
 =======
+=======
+>>>>>>> 9f736489382723fa0182cb9916caf67d2b67934d
 const Product = require("../models/productModel");
 const mongoose = require("mongoose");
 const ErrorHandler = require("../utils/errorHandler");
@@ -12,9 +15,14 @@ const ApiFeatures = require("../utils/apiFeatures");
 
 // Create new product Admin=> /api/v1/admin/product/new
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
+<<<<<<< HEAD
   req.body.user = req.user.id;
 
   const product = await Product.create(req.body);
+=======
+  const product = await Product.create(req.body);
+
+>>>>>>> 9f736489382723fa0182cb9916caf67d2b67934d
   res.status(201).json({
     success: true,
     product,
@@ -75,7 +83,10 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     message: "Product is deleted successfully",
   });
 });
+<<<<<<< HEAD
 
 
 //for review purposes i will add it later
 >>>>>>> Stashed changes
+=======
+>>>>>>> 9f736489382723fa0182cb9916caf67d2b67934d

@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 const errorMiddleware = require("../Backend/middleware/error");
 const cookieParser = require("cookie-parser");
 >>>>>>> Stashed changes
 
+=======
+const errorMiddleware = require("../Backend/middleware/error");
+>>>>>>> 9f736489382723fa0182cb9916caf67d2b67934d
 app.use(express.json());
 app.use(cookieParser());
 
@@ -21,5 +25,8 @@ app.use("/api/v1", order);
 //middleware to handle errors
 app.use(errorMiddleware);
 >>>>>>> Stashed changes
+
+//middleware to handle errors
+app.use(errorMiddleware);
 
 module.exports = app;
