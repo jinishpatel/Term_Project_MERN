@@ -1,0 +1,29 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+.btn {
+  opacity: 50%;
+  margin: 1rem 0.5rem;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+.btn.primary {
+  background-color: yellow;
+  opacity: 80;
+  color: black;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+}
+
+.btn:hover {
+  opacity: 100%;
+}
+
+.btn.primary:hover {
+  opacity: 100%;
+}

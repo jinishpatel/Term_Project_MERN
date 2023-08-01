@@ -1,7 +1,7 @@
-import NavBar from "../components/NavBar";
-import HeroImg from "../components/HeroImg";
-import Footer from "../components/Footer";
-import Main from "../components/Main";
+import NavBar from "../components/header/NavBar";
+import HeroImg from "../components/home/HeroImg";
+import Footer from "../components/footer/Footer";
+import Main from "../components/home/Main";
 
 const Index = () => {
   return (

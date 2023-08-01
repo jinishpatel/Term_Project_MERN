@@ -1,0 +1,15 @@
+.main-section {
+  width: 100%;
+  min-height: 1080px;
+  background-color: #1f1e1e;
+}
+.featured-product {
+  color: white;
+  text-decoration: underline;
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 3rem;
+  font-family: "Roboto", sans-serif;
+  animation: bounceInLeft; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 5s; /* don't forget to set a duration! */
+}

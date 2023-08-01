@@ -1,6 +1,7 @@
 const app = require("./app.js");
 
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 const connectDatabase = require("./config/database");
 
@@ -29,3 +30,10 @@ process.on("uncaughtException", (err) => {
     process.exit(1);
   });
 });
+
+const corsOptions = {
+  origin: "http://localhost:4000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));

@@ -6,15 +6,24 @@ import Cart from "./routes/Cart";
 import ContactUs from "./routes/ContactUs";
 import UserProfile from "./routes/UserProfile";
 import Index from "./routes/Index";
+import Webfont from "WebFontLoader";
+import React from "react";
 
 function App() {
+  React.useEffect(() => {
+    Webfont.load({
+      google: {
+        families: ["Roboto", "Droid Sans", "Chilanka"],
+      },
+    });
+  });
   return (
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/About" element={<About />} />
       <Route path="/ContactUs" element={<ContactUs />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/UserProfile" element={<UserProfile/>} />
+      <Route path="/UserProfile" element={<UserProfile />} />
     </Routes>
   );
 }
