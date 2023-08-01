@@ -1,22 +1,22 @@
 import {
-  ALL_PRODUCTS_ERROR,
-  ALL_PRODUCTS_REQUEST,
-  ALL_PRODUCTS_SUCCESS,
+  ALL_PRODUCT_ERROR,
+  ALL_PRODUCT_REQUEST,
+  ALL_PRODUCT_SUCCESS,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 const productReducer = (state = { products: [] }, action) => {
   switch (action.type) {
-    case ALL_PRODUCTS_REQUEST: {
+    case ALL_PRODUCT_REQUEST: {
       return { loading: true, products: [] };
     }
-    case ALL_PRODUCTS_SUCCESS: {
+    case ALL_PRODUCT_SUCCESS: {
       return {
         loading: false,
         products: action.payload.products,
         productsCount: action.payload.productsCount,
       };
     }
-    case ALL_PRODUCTS_ERROR: {
+    case ALL_PRODUCT_ERROR: {
       return { loading: false, error: action.payload };
     }
     case CLEAR_ERRORS: {

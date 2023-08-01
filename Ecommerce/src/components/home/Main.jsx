@@ -14,11 +14,7 @@ const product = {
 const Main = () => {
   const dispatch = useDispatch();
   console.log("Connected to Main");
-  useEffect(
-    () => dispatch(getProducts()),
-
-    [dispatch]
-  );
+  useEffect(() => dispatch(getProducts()), [dispatch]);
 
   return (
     <div className="main-section">
