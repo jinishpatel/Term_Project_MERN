@@ -1,17 +1,15 @@
 import NavBar from "../components/header/NavBar";
-import HeroImg from "../components/home/HeroImg";
 import Footer from "../components/footer/Footer";
-import Maiin from "../components/home/Main";
+import RegisterTheme from "../components/Register/register";
 
-const Index = () => {
+const Register = () => {
   return (
     <div>
       <NavBar />
-      <HeroImg />
-      <Maiin />
+      <RegisterTheme />
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default Register;

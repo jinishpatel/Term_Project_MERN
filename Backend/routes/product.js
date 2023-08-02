@@ -23,11 +23,4 @@ router
 
 router.route("/product/:id").get(getSingleProduct);
 
-router.route("/product/new").post(createProduct);
-router
-  .route("/product/:id")
-  .put(updateProduct)
-  .delete(deleteProduct)
-  .get(getSingleProduct);
-
 module.exports = router;

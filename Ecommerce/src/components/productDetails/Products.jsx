@@ -1,16 +1,15 @@
-import "./main.css";
-import Product from "./product";
 import React, { Fragment, useEffect } from "react";
-import { getProducts } from "../../actions/productAction";
-import { useDispatch, useSelector } from "react-redux";
+import "./products.css";
+import { useSelector, useDispatch } from "react-redux";
 import Loader from "../loader/loader";
+import ProductCard from "../home/product";
+import { getProducts } from "../../actions/productAction";
 
-const Main = () => {
+const Products = () => {
   const dispatch = useDispatch();
   const { loading, error, product, productCount } = useSelector(
     (state) => state.products
   );
-  console.log("Connected to Main");
   useEffect(() => dispatch(getProducts()), [dispatch]);
 
   return (
@@ -19,14 +18,12 @@ const Main = () => {
         <Loader />
       ) : (
         <Fragment>
-          <div className="main-section">
-            <div className="main-container">
-              <div className="featured-product ">Featured Products</div>
-            </div>
-            <div className="container-product" id="container">
+          <div className="Products-main">
+            <h2>Products</h2>
+            <div className="products">
               {product &&
                 product.map((product) => (
-                  <Product key={product._id} product={product} />
+                  <ProductCard key={product._id} product={product} />
                 ))}
             </div>
           </div>
@@ -36,4 +33,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Products;

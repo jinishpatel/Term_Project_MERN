@@ -37,7 +37,7 @@ const Navbar = () => {
           <Link to="/grp">GRP MEMBER</Link>
         </li>
         <li>
-          <Link to="/user">USER</Link>
+          <Link to="/login">Login/Register</Link>
         </li>
       </ul>
       <div className="hamburger-menu" onClick={handleClick}>

@@ -1,17 +1,15 @@
 import NavBar from "../components/header/NavBar";
-import HeroImg from "../components/home/HeroImg";
 import Footer from "../components/footer/Footer";
-import Maiin from "../components/home/Main";
+import Search from "../components/productDetails/Search";
 
-const Index = () => {
+const SearchData = () => {
   return (
     <div>
       <NavBar />
-      <HeroImg />
-      <Maiin />
+      <Search />
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default SearchData;

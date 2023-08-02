@@ -1,0 +1,13 @@
+.Products-main {
+  width: 100%;
+  height: 100%;
+  background-color: #303030;
+  text-align: center;
+  padding-top: 10vw;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
