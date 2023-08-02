@@ -7,7 +7,7 @@ import { getProductDetails } from "../../actions/productAction";
 
 const ProductDetails = (match) => {
   const dispatch = useDispatch();
-  try {
+
     const { product } = useSelector((state) => state.productDetails);
     console.log("product" + product);
     useEffect(
@@ -32,8 +32,6 @@ const ProductDetails = (match) => {
         </Carousel>
       </Fragment>
     );
-  } catch (error) {
-    console.log("Error from productDetails");
-  }
+  
 };
 export default ProductDetails;
