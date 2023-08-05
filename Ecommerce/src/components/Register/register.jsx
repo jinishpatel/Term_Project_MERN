@@ -1,6 +1,34 @@
-import React, { Fragment } from "react";
+import { Fragment, useState } from "react";
 import "./register.css";
-const registerTheme = () => {
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+const RegisterTheme = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  console.log(user);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`http://localhost:4000/api/v1/register`, {
+        ...user,
+        withCredentials: true,
+      });
+      res.status === 200 && navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Fragment>
       <div className="registerContainer">
@@ -8,35 +36,26 @@ const registerTheme = () => {
           <div className="card-header">
             <div className="log">Register</div>
           </div>
-          <form>
-            <div className="form-group">
-              <label>Username:</label>
-              <input required="" name="username" id="username" type="text" />
-            </div>
-            <div className="form-group">
-              <label>Password:</label>
+          <form onSubmit={handleSubmit}>
+            <div className="left">
+              <h1>Create a new account</h1>
+              <label htmlFor="">Username*</label>
               <input
-                required=""
-                name="password"
-                id="password"
-                type="password"
+                onChange={handleChange}
+                type="text"
+                name="username"
+                placeholder="Enter your username"
               />
-            </div>
-            <div className="form-group">
-              <label>Confirm Password:</label>
+              <label htmlFor="">Email*</label>
               <input
-                required=""
-                name="password"
-                id="password"
-                type="password"
+                onChange={handleChange}
+                type="email"
+                name="email"
+                placeholder="Enter your email"
               />
-            </div>
-            <div className="form-group">
-              <label>Profile Picture:</label>
-              <input type="file" accept="image/png, image/gif, image/jpeg" />
-            </div>
-            <div className="form-group">
-              <input value="Register" type="submit" />
+              <label htmlFor="">Password*</label>
+              <input onChange={handleChange} type="password" name="password" />
+              <button>Register</button>
             </div>
           </form>
         </div>
@@ -45,4 +64,4 @@ const registerTheme = () => {
   );
 };
 
-export default registerTheme;
+export default RegisterTheme;
