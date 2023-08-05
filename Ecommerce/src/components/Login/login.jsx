@@ -1,35 +1,53 @@
-import React, { Fragment } from "react";
+import { Fragment, useState } from "react";
 import "./login.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const LoginTheme = () => {
+const RegisterTheme = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  console.log(user);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`http://localhost:4000/api/v1/login`, {
+        ...user,
+      });
+      res.status === 200 && navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Fragment>
-      <div className="LoginContainer">
-        <div className="login-card">
+      <div className="registerContainer">
+        <div className="register-card">
           <div className="card-header">
             <div className="log">Login</div>
           </div>
-          <form>
-            <div className="form-group">
-              <label>Username:</label>
-              <input required="" name="username" id="username" type="text" />
-            </div>
-            <div className="form-group">
-              <label>Password:</label>
+          <form onSubmit={handleSubmit}>
+            <div className="left">
+              <h1>Login</h1>
+
+              <label htmlFor="">Email*</label>
               <input
-                required=""
-                name="password"
-                id="password"
-                type="password"
+                onChange={handleChange}
+                type="email"
+                name="email"
+                placeholder="Enter your email"
               />
-            </div>
-            <div className="form-group">
-              <input value="Login" type="submit" />
-            </div>
-            <div>
-              <p className="acoount-signUp">
-                Don't Have Acoount With Us?<a href="/register">REGISTER NOW</a>
-              </p>
+              <label htmlFor="">Password*</label>
+              <input onChange={handleChange} type="password" name="password" />
+              <button>Login</button>
             </div>
           </form>
         </div>
@@ -38,4 +56,4 @@ const LoginTheme = () => {
   );
 };
 
-export default LoginTheme;
+export default RegisterTheme;
