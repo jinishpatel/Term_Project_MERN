@@ -1,16 +1,19 @@
 import React, { useState, Fragment } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "./search.css";
 
-const Search = ({ history }) => {
+const Search = () => {
   const [keyword, setKeyword] = useState("");
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const searchSubmitHandler = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
-      history.push(`/product/${keyword}`);
+      navigate(`/products/${keyword}`);
     } else {
-      history.push("/product");
+      navigate("/product");
     }
   };
 

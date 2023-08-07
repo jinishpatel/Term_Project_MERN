@@ -10,24 +10,30 @@ import {
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 
-export const getProducts = () => async (dispatch) => {
-  try {
-    console.log("Connected to getProduct");
-    dispatch({ type: ALL_PRODUCT_REQUEST });
-
-    const { data } = await axios.get("/api/v1/product");
-    console.log(data);
-    dispatch({
-      type: ALL_PRODUCT_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: ALL_PRODUCT_ERROR,
-      payload: error.response.data.message,
-    });
-  }
-};
+export const getProducts =
+  (keyword = " ", currentPage = 1, price = [0, 2500], category) =>
+  async (dispatch) => {
+    try {
+      console.log("Connected to getProduct");
+      dispatch({ type: ALL_PRODUCT_REQUEST });
+      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}`;
+      if (category)
+      { 
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category}`;
+      }
+      const { data } = await axios.get(link);
+      console.log("aadfasd", data);
+      dispatch({
+        type: ALL_PRODUCT_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ALL_PRODUCT_ERROR,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 export const getProductDetails = (id) => async (dispatch) => {
   try {

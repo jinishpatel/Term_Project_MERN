@@ -1,6 +1,6 @@
 // import { useState } from "react";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import About from "./routes/About";
 import Products from "./routes/Products";
 import Cart from "./routes/Cart";
@@ -25,10 +25,11 @@ function App() {
   });
   return (
     <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/product/:id" element={<ProductDetails />} />
-      <Route path="/product" element={<Products />} />
-      <Route path="/search" element={<Search />} />
+      <Route exact path="/" element={<Index />} />
+      <Route exact path="/product/:id" element={<ProductDetails />} />
+      <Route exact path="/product" element={<Products />} />
+      <Route path="/products/:keyword" element={<Products />} />
+      <Route exact path="/search" element={<Search />} />
       <Route path="/ContactUs" element={<ContactUs />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />

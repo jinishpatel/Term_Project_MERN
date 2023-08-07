@@ -24,14 +24,14 @@ const Navbar = () => {
 
       <ul className={click ? "nav-menu active" : "nav-menu"}>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/product">All Products</Link>
         </li>
 
         <li>
           <Link to="/cart">Cart</Link>
         </li>
         <li>
-          <Link to="/wishlist">Wishlist</Link>
+          <Link to="/search">Search</Link>
         </li>
         <li>
           <Link to="/grp">GRP MEMBER</Link>

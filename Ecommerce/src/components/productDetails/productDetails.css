@@ -1,0 +1,50 @@
+.productDetails {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.productDetails_left {
+  width: 50%;
+  height: 100%;
+  padding-top: 5%;
+  margin-top: 5%;
+}
+.imagedisp {
+  padding-top: 10%;
+  height: auto;
+}
+.imagedisp img {
+  width: 100%;
+  height: 100%;
+}
+img .carsoulImg {
+  height: 100%;
+}
+.productDetails_right {
+  width: 50%;
+  height: 100%;
+  color: #ccc;
+  padding-top: 15%;
+  margin-top: 5%;
+  /* border-left: 5px solid #ccc; */
+  bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .productDetails {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .productDetails_left {
+    width: 100%;
+  }
+  .productDetails_right {
+    width: 100%;
+  }
+}

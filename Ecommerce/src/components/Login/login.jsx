@@ -44,9 +44,16 @@ const RegisterTheme = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
+                required
               />
               <label htmlFor="">Password*</label>
-              <input onChange={handleChange} type="password" name="password" />
+              <input
+                onChange={handleChange}
+                type="password"
+                name="password"
+                placeholder="Enter your Password"
+                required
+              />
               <button>Login</button>
             </div>
           </form>
