@@ -20,10 +20,13 @@ const RegisterTheme = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:4000/api/v1/register`, {
-        ...user,
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        `http://localhost:4000/api/v1/registeruser`,
+        {
+          ...user,
+          withCredentials: true,
+        }
+      );
       res.status === 200 && navigate("/login");
     } catch (error) {
       console.log(error);

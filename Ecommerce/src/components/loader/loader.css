@@ -1,44 +1,38 @@
-.loader-container {
-  text-align: center;
-  margin: auto;
-  width: 100%;
-  height: 100vh;
-  background-color: aliceblue;
+.custom-loader {
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  color: #71a765;
+  background: radial-gradient(farthest-side, currentColor 90%, #0000) left /
+      10px 10px,
+    radial-gradient(farthest-side, currentColor 90%, #0000) center/10px 10px,
+    radial-gradient(farthest-side, currentColor 90%, #0000) right / 10px 10px,
+    linear-gradient(currentColor 0 0) center/100% 4px;
+  background-repeat: no-repeat;
+  position: relative;
+  animation: s6 2s infinite linear;
 }
-.shapes {
-  width: 44.8px;
-  height: 44.8px;
-  color: #96b68c;
-  display: grid;
-}
-
-.shapes::before,
-.shapes::after {
+.custom-loader:before,
+.custom-loader:after {
   content: "";
-  grid-area: 1/1;
-  background: currentColor;
-  clip-path: polygon(0 0, 50% 50%, 0 100%);
-  animation: shapes-gkmo0z 2s infinite;
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  animation: inherit;
+  --s: calc(50% - 5px);
+  animation-direction: reverse;
+}
+.custom-loader:after {
+  --s: calc(5px - 50%);
 }
 
-.shapes::after {
-  animation-delay: -1.5s;
-  --s: 90deg;
-}
-
-@keyframes shapes-gkmo0z {
-  0%,
-  12.5% {
-    transform: rotate(var(--s, 0deg)) rotate(0deg);
+@keyframes s6 {
+  0% {
+    transform: translate(var(--s, 0)) rotate(0);
   }
-
-  37.5%,
-  62.5% {
-    transform: rotate(var(--s, 0deg)) rotate(-180deg);
-  }
-
-  87.5%,
   100% {
-    transform: rotate(var(--s, 0deg)) rotate(-360deg);
+    transform: translate(var(--s, 0)) rotate(1turn);
   }
 }

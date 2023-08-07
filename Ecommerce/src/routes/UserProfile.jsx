@@ -1,6 +1,7 @@
+import { Route } from "react-router-dom";
 
 const UserProfile = () => {
-return <div>userProfile</div>;
+  return <div></div>;
 };
 
 export default UserProfile;

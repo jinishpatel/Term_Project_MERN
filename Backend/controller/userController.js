@@ -8,18 +8,30 @@ const crypto = require("crypto");
 //register a user => /api/v1/register
 
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const { username, email, password } = req.body;
-  const user = await User.create({
-    username,
-    email,
-    password,
-    avatar: {
-      public_id: "this is a sample id",
-      url: "profilepicURL",
-    },
-  });
-  const token = user.getJWTToken();
-  sendToken(user, 200, res);
+  try {
+    // const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
+    //   folder: "avatars",
+    //   width: 150,
+    //   crop: "scale",
+    // });
+    const { username, email, password } = req.body;
+    const user = await User.create({
+      username,
+      email,
+      password,
+      avatar: {
+        public_id: "myCloud.public_id",
+        url: "myCloud.secure_url",
+      },
+    });
+    const token = user.getJWTToken();
+    sendToken(user, 200, res);
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error.message,
+    });
+  }
 });
 
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {

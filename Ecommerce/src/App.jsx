@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 
 import { Route, Router, Routes } from "react-router-dom";
 import About from "./routes/About";
@@ -14,6 +14,10 @@ import Webfont from "WebFontLoader";
 import React from "react";
 import Payment from "./routes/Paymentgatwat";
 import ProductDetails from "./routes/ProductDetails";
+import store from "./store";
+
+
+import { useSelector } from "react-redux";
 
 function App() {
   React.useEffect(() => {
@@ -22,9 +26,11 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
+
   });
   return (
     <Routes>
+      
       <Route exact path="/" element={<Index />} />
       <Route exact path="/product/:id" element={<ProductDetails />} />
       <Route exact path="/product" element={<Products />} />

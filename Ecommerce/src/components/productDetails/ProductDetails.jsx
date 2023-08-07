@@ -17,6 +17,7 @@ const ProductDetails = () => {
     dispatch(getProductDetails(id));
   }, [dispatch, id]);
 
+  
   return (
     <Fragment>
       <div className="productDetails">
