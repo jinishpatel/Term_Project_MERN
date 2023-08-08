@@ -15,9 +15,8 @@ import React from "react";
 import Payment from "./routes/Paymentgatwat";
 import ProductDetails from "./routes/ProductDetails";
 import store from "./store";
-
-
-import { useSelector } from "react-redux";
+import loaduser from "./actions/userAction";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
   React.useEffect(() => {
@@ -26,11 +25,10 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-
-  });
+    store.dispatch(loaduser());
+  }, []);
   return (
     <Routes>
-      
       <Route exact path="/" element={<Index />} />
       <Route exact path="/product/:id" element={<ProductDetails />} />
       <Route exact path="/product" element={<Products />} />

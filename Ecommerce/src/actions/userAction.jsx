@@ -52,16 +52,17 @@ export const register = (formData) => async (dispatch) => {
   }
 };
 
-export const loaduser = () => async (dispatch) => {
+const loaduser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get("/api/v1/");
+    const { data } = await axios.get("/api/v1/me");
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.message });
   }
 };
+export default loaduser;
 
 export const logout = () => async (dispatch) => {
   try {
