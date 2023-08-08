@@ -27,7 +27,7 @@ const LoginSignUp = (history) => {
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
-  const { username, email, password } = user;
+  const { name, email, password } = user;
 
   const [avatar, setAvatar] = useState("");
 
@@ -39,14 +39,17 @@ const LoginSignUp = (history) => {
     dispatch(login(loginEmail, loginPassword));
   };
   console.log(loginEmail);
+
   const registerSubmit = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
-    myForm.set("name", user.name);
-    myForm.set("email", user.email);
-    myForm.set("password", user.password);
+
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("password", password);
     // myForm.set("avatar", user.avatar);
+    console.log("myform", myForm);
     dispatch(register(myForm));
   };
 
@@ -61,6 +64,7 @@ const LoginSignUp = (history) => {
       };
       reader.readAsDataURL(e.target.files[0]);
     } else {
+      console.log(e.target.name, e.target.value);
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
@@ -79,8 +83,14 @@ const LoginSignUp = (history) => {
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      localStorage.setItem("user", JSON.stringify({ username: loginEmail }));
-      navigate("/");
+      const fetchData = async () => {
+        await localStorage.setItem(
+          "user",
+          JSON.stringify({ username: loginEmail })
+        );
+        navigate("/");
+      };
+      fetchData();
     }
   }, [dispatch, error, isAuthenticated, history]);
   const switchTabs = (e, tab) => {

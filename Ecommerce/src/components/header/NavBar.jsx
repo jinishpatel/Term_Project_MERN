@@ -2,26 +2,20 @@ import "./navBar.css";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../actions/userAction";
 
 const Navbar = () => {
   const [click, setclick] = useState(false);
   const handleClick = () => setclick(!click);
-  const [userName, setUserName] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    // Check if the user is logged in (e.g., by checking for a token)
-    const Token = localStorage.getItem("token");
-    console.log("as", Token);
 
-    if (Token) {
-      setIsLoggedIn(true);
-      console.log(isLoggedIn);
-    }
-    const storedUsername = localStorage.getItem("user");
-    if (storedUsername) {
-      setUserName(JSON.parse(storedUsername).username);
-    }
-  }, []);
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    alert.success("Logout Successfully");
+    console.log("logout");
+  };
   const [color, setcolor] = useState(false);
   const changeColor = () => {
     if (window.scrollY >= 100) {
@@ -32,7 +26,6 @@ const Navbar = () => {
   };
   window.addEventListener("scroll", changeColor);
 
-  console.log(userName);
   return (
     <div className={color ? "header header-bg " : "header"}>
       <Link to="/">
@@ -44,21 +37,27 @@ const Navbar = () => {
           <Link to="/product">All Products</Link>
         </li>
 
-        <li>
+        {/* <li>
           <Link to="/cart">Cart</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/search">Search</Link>
         </li>
+
         <li>
-          <Link to="/grp">GRP MEMBER</Link>
-        </li>
-        <li>
-          {isLoggedIn ? (
-            <Link to="/me">hello!{userName}</Link>
-          ) : (
-            <Link to="/login">Login</Link>
-          )}
+          {/* {userLogin ? (
+            <div className="dropdown">
+              <button className="dropbtn">{user.username}</button>
+              <div className="dropdown-content">
+                <Link to="/me">Profile</Link>
+                <Link onClick={logoutHandler}>Logout</Link>
+              </div>
+            </div>
+          ) : ( */}
+          {/* <linkContainer> */}
+          <Link href="/login">Login</Link>
+          {/* </linkContainer> */}
+          {/* )} */}
         </li>
       </ul>
       <div className="hamburger-menu" onClick={handleClick}>
