@@ -15,30 +15,65 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import PublicIcon from '@mui/icons-material/Public';
 import TransferWithinAStationIcon from '@mui/icons-material/TransferWithinAStation';
 import { Country, State as stateCity } from 'country-state-city';
-import CheckOutSteps  from './CheckOutSteps';
+import CheckOutSteps from './CheckOutSteps';
+import {
+	isValidNumber,
+	parsePhoneNumberFromString,
+} from 'google-libphonenumber';
 
 const ShippingInfo = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { loading } = useSelector((state) => state.user);
 	const { shippingInfo } = useSelector((state) => state.cart);
 	const [address, setAddress] = React.useState(shippingInfo.address);
 	const [city, setCity] = React.useState(shippingInfo.city);
 	const [phoneNo, setPhoneNo] = React.useState(shippingInfo.phoneNo);
-	const [postalCode, setPostalCode] = React.useState(shippingInfo.postalCode);
+	const [pinCode, setpinCode] = React.useState(shippingInfo.pinCode);
 	const [country, setCountry] = React.useState(shippingInfo.country);
-	const [State, setState] = React.useState(shippingInfo.country);
+	const [state, setState] = React.useState(shippingInfo.state);
+
+	// const selectedCountry = Country.getCountryByCode(country);
+	// console.log("selectedCountry",selectedCountry.isoCode)
 	// console.log('asadasd', stateCity.getAllStatesByCountryId('IN'));
 	const shippingSubmit = (e) => {
-		console.log('shippingSubmit');
+		e.preventDefault();
+		// if (selectedCountry) {
+		// Validate and format the phone number
+		// const phoneNumber = parsePhoneNumberFromString(phoneNo, selectedCountry.iso2);
+		// if (phoneNumber && isValidNumber(phoneNumber))
+		// {
+		// 	const formattedPhoneNumber = phoneNumber.formatInternational();
+		// 	// Now you can use the formattedPhoneNumber in your submission logic
+		// 	console.log('Formatted Phone Number:', formattedPhoneNumber);
+		// } else {
+		// 	console.log('Invalid Phone Number');
+		// }
+		if (phoneNo.length < 10 || phoneNo.length > 10) {
+			alert('Please enter valid phone number');
+			return;
+		}
+		dispatch(
+			saveShippingInfo({
+				address,
+				city,
+				phoneNo,
+				pinCode,
+				country,
+				state,
+			}),
+		);
+		navigate('/order/confirm');
 	};
+
 	return (
 		<Fragment>
 			{loading ? (
 				<Loader />
 			) : (
-					<Fragment>
+				<Fragment>
 					<div className="shipping-container">
-					<CheckOutSteps activeStep={0} />
+						<CheckOutSteps activeStep={0} />
 						<div className="shipping-info">
 							<h1>Shipping Info</h1>
 							<form
@@ -74,20 +109,8 @@ const ShippingInfo = () => {
 										type="number"
 										placeholder="Pin Code"
 										required
-										value={postalCode}
-										onChange={(e) => setPostalCode(e.target.value)}
-									/>
-								</div>
-
-								<div>
-									<PhoneIcon />
-									<input
-										type="number"
-										placeholder="Phone Number"
-										required
-										value={phoneNo}
-										onChange={(e) => setPhoneNo(e.target.value)}
-										size="10"
+										value={pinCode}
+										onChange={(e) => setpinCode(e.target.value)}
 									/>
 								</div>
 
@@ -101,8 +124,11 @@ const ShippingInfo = () => {
 									>
 										<option value="">Country</option>
 										{Country.getAllCountries().map((item) => (
-											<option key={item.isoCode} value={item.isoCode}>
-											{item.name}
+											<option
+												key={item.isoCode}
+												value={item.isoCode}
+											>
+												{item.name}
 											</option>
 										))}
 									</select>
@@ -114,27 +140,41 @@ const ShippingInfo = () => {
 
 										<select
 											required
-											value={State}
+											value={state}
 											onChange={(e) => setState(e.target.value)}
 										>
 											<option value="">State</option>
-											{stateCity.getStatesOfCountry(country).map((item) => (
-												<option
-													key={item.isoCode}
-													value={item.isoCode}
-												>
-													{item.name}
-												</option>
-											))}
+											{stateCity
+												.getStatesOfCountry(country)
+												.map((item) => (
+													<option
+														key={item.isoCode}
+														value={item.isoCode}
+													>
+														{item.name}
+													</option>
+												))}
 										</select>
 									</div>
 								)}
+
+								<div>
+									<PhoneIcon />
+									<input
+										type="number"
+										placeholder="Phone Number"
+										required
+										value={phoneNo}
+										onChange={(e) => setPhoneNo(e.target.value)}
+										size="10"
+									/>
+								</div>
 
 								<input
 									type="submit"
 									value="Continue"
 									className="shippingBtn"
-									disabled={!State}
+									disabled={!state}
 								/>
 							</form>
 						</div>
