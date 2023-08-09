@@ -8,9 +8,9 @@ import { logout } from "../../actions/userAction";
 const Navbar = () => {
   const [click, setclick] = useState(false);
   const handleClick = () => setclick(!click);
-
   const dispatch = useDispatch();
-
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  console.log("user", user);
   const logoutHandler = () => {
     dispatch(logout());
     alert.success("Logout Successfully");
@@ -43,21 +43,25 @@ const Navbar = () => {
         <li>
           <Link to="/search">Search</Link>
         </li>
-
         <li>
-          {/* {userLogin ? (
+          <Link to="/cart">Cart</Link>
+        </li>
+        <li>
+          {isAuthenticated ? (
             <div className="dropdown">
-              <button className="dropbtn">{user.username}</button>
+              <button className="dropbtn">{user.name}</button>
               <div className="dropdown-content">
                 <Link to="/me">Profile</Link>
+                <Link to="/order">Orders</Link>
+                {user.role === "admin" ? (
+                  <Link to="/dashboard">Dashboard</Link>
+                ) : null}
                 <Link onClick={logoutHandler}>Logout</Link>
               </div>
             </div>
-          ) : ( */}
-          {/* <linkContainer> */}
-          <Link href="/login">Login</Link>
-          {/* </linkContainer> */}
-          {/* )} */}
+          ) : (
+            <Link to="/login">Login/Register</Link>
+          )}
         </li>
       </ul>
       <div className="hamburger-menu" onClick={handleClick}>

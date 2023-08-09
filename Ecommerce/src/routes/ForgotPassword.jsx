@@ -1,15 +1,15 @@
 import NavBar from "../components/header/NavBar";
-import UserProfile from "../components/user/UserProfile";
+import Forgot_Password from "../components/user/Forgot_Password";
 import Footer from "../components/footer/Footer";
 
-const UProfile = () => {
+const UpdateProfile = () => {
   return (
     <div>
       <NavBar />
-      <UserProfile />
+      <Forgot_Password />
       <Footer />
     </div>
   );
 };
 
-export default UProfile;
+export default UpdateProfile;

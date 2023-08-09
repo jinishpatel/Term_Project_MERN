@@ -1,10 +1,11 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import "./productDetails.css";
 import Carousel from "react-material-ui-carousel";
 import { getProductDetails } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams }  from "react-router-dom";
+import { addItemsToCart } from "../../actions/cartAction";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,26 @@ const ProductDetails = () => {
     dispatch(getProductDetails(id));
   }, [dispatch, id]);
 
+  const [quantity,setQuantity]=useState(1);
+
+  const increaseQuantity=()=>{
+    const qty=quantity+1;
+    if(product.stock>=qty){
+      setQuantity(qty);
+    }
+  }
+  const descreseQuentity=()=>{
+    const qty=quantity-1;
+    if(qty<1){
+      setQuantity(1);
+    }else{
+      setQuantity(qty);
+    }
+  }
+  const addToCartHandler=()=>{
+    dispatch(addItemsToCart(id,quantity)),
+    console.log('Product Added to Cart')
+  }
   
   return (
     <Fragment>
@@ -44,14 +65,14 @@ const ProductDetails = () => {
           <div className="detailblock_3">
             <div className="detailblock_3_1">
               <div className="detailblock_3_1_1">
-                <button>-</button>
-                <input value="1" type="number" />
-                <button>+</button>
+              <button className="Minus" onClick={descreseQuentity}>-</button>
+                <input readOnly value={quantity} type="number" />
+                <button className="plus" onClick={increaseQuantity}>+</button>
               </div>
               <div className="detailblock_3_1_2">
                 <h3>${product.price}</h3>
               </div>
-              <button>Add to Cart</button>
+              <button className="addtocart" onClick={addToCartHandler}>Add to Cart</button>
             </div>
 
             <p>

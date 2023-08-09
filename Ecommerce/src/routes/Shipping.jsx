@@ -1,13 +1,13 @@
 import React from 'react';
 import NavBar from '../components/header/NavBar';
 import Footer from '../components/footer/Footer';
-import CartPage from '../components/cart/CartPage';
+import ShippingInfo from '../components/shipping/ShippingInfo';
 
 const Cart = () => {
   return (
     <div>
       <NavBar />
-      <CartPage />
+      <ShippingInfo />
       <Footer />
     </div>
   )

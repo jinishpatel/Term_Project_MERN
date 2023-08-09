@@ -1,15 +1,15 @@
 import NavBar from "../components/header/NavBar";
+import Update_Password from "../components/user/Update_Password";
 import Footer from "../components/footer/Footer";
-import RegisterTheme from "../components/Register/register";
 
-const Register = () => {
+const UpdatePassword = () => {
   return (
     <div>
       <NavBar />
-      <RegisterTheme />
+      <Update_Password />
       <Footer />
     </div>
   );
 };
 
-export default Register;
+export default UpdatePassword;

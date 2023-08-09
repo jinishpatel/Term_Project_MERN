@@ -14,9 +14,9 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     //   width: 150,
     //   crop: "scale",
     // });
-    const { username, email, password } = req.body;
+    const { name, email, password } = req.body;
     const user = await User.create({
-      username,
+      name,
       email,
       password,
       avatar: {
@@ -24,6 +24,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         url: "myCloud.secure_url",
       },
     });
+    console.log("user: " + user);
     const token = user.getJWTToken();
     sendToken(user, 200, res);
   } catch (error) {
@@ -170,7 +171,7 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 // update User Profile
 exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
   const newUserData = {
-    username: req.body.username,
+    name: req.body.name,
     email: req.body.email,
   };
 

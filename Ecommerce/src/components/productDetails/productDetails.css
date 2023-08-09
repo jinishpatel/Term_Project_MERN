@@ -1,50 +1,139 @@
 .productDetails {
-  width: 100%;
-  height: 90vh;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-content: space-between;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  padding-top:15%;
+  height: 80vh;
+
 }
 
 .productDetails_left {
-  width: 50%;
+  flex: 1;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
   height: 100%;
-  padding-top: 5%;
-  margin-top: 5%;
-}
-.imagedisp {
-  padding-top: 10%;
-  height: auto;
-}
-.imagedisp img {
-  width: 100%;
-  height: 100%;
-}
-img .carsoulImg {
-  height: 100%;
-}
-.productDetails_right {
-  width: 50%;
-  height: 100%;
-  color: #ccc;
-  padding-top: 15%;
-  margin-top: 5%;
-  /* border-left: 5px solid #ccc; */
-  bottom: 0;
 }
 
-@media screen and (max-width: 768px) {
-  .productDetails {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .productDetails_left {
-    width: 100%;
-  }
-  .productDetails_right {
-    width: 100%;
-  }
+.imagedisp {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+ 
+.carsoulImg {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.productDetails_right {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.detailblock_1 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.detailblock_2 {
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.detailblock_3 {
+  display: flex;
+  flex-direction: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.detailblock_3_1 {
+  display: flex;
+  flex-direction: column;
+  flex-direction: flex-start;
+
+  align-items: center;
+}
+.addtocart{
+  margin-top:2rem;
+  width: 100px;
+  height: 80px;
+}
+
+.detailblock_3_1_1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin-right: 10px;
+}
+
+.addtocart {
+  border: none;
+  background-color: #eb3e3e;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.addtocart:hover {
+  background-color: #3498db;
+  color: white;
+}
+
+.Minus , .plus {
+  border: none;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.Minus:hover {
+  background-color: #db8a34;
+  color: white;
+}
+.plus:hover{
+  background-color: rgb(111, 244, 151);
+  color:#f9f9f9
+}
+
+.detailblock_3_1_2 {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.redColor {
+  color: red;
+}
+
+.greenColor {
+  color: green;
+}
+
+h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+p {
+  line-height: 1.6;
+  color: #666;
 }

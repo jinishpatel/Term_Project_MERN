@@ -77,6 +77,8 @@ const LoginSignUp = (history) => {
 
     setOpenAlert(false);
   };
+
+  const redirect = location.search ? location.search.split("=")[1] : "/me";
   useEffect(() => {
     if (error) {
       setOpenAlert(true);
@@ -88,11 +90,12 @@ const LoginSignUp = (history) => {
           "user",
           JSON.stringify({ username: loginEmail })
         );
-        navigate("/");
+        navigate(redirect);
       };
       fetchData();
     }
-  }, [dispatch, error, isAuthenticated, history]);
+  }, [dispatch, error, isAuthenticated, history,redirect]);
+
   const switchTabs = (e, tab) => {
     e.preventDefault();
     if (tab === "login") {
