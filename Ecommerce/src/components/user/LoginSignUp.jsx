@@ -231,7 +231,7 @@ const LoginSignUp = (history) => {
 									/>
 								</div>
 
-								<div id="registerImage">
+								{/* <div id="registerImage">
 									<img src={avatarPreview} alt="Avatar Preview" />
 									<input
 										type="file"
@@ -239,7 +239,7 @@ const LoginSignUp = (history) => {
 										accept="image/*"
 										onChange={registerDataChange}
 									/>
-								</div>
+								</div> */}
 								<input
 									type="submit"
 									value="Register"
